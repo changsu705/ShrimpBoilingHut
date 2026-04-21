@@ -6,7 +6,7 @@ public class test : MonoBehaviour
     void Start()
     {
         // This is a simple test script that logs a message to the console when the game starts.
-        // You can replace this with any initialization code you need.
+        // 6조 새우삶는 오두막 테스트 파일
     }
 
     // Update is called once per frame
