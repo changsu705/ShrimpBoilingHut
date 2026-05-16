@@ -1,0 +1,31 @@
+using UnityEngine;
+
+public class Crab : MonoBehaviour
+{
+    public int CrabType;
+
+    public bool hasMerged = false;
+
+    // Unity 메시지 | 참조 0개
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (hasMerged)                                                     // 이미 합쳐진 갑각류는 무시
+            return;
+
+        Crab otherCrab = collision.gameObject.GetComponent<Crab>();        // 다른 갑각류와 충돌 했는지 확인
+
+        if (otherCrab != null && !otherCrab.hasMerged && otherCrab.CrabType == CrabType)     // 충돌한 것이 갑각류고 타입이 같으면(합쳐지지 않았을 경우)
+        {
+            hasMerged = true;                                                                // 합쳐짐 표시
+            otherCrab.hasMerged = true;
+
+            Vector3 mergePosition = (transform.position + otherCrab.transform.position) / 2f;      // 두 과일의 중간 위치 계산
+
+            // 게임 매니저에서 Merge 구현 된 것을 호출 (아직 미구현)
+
+            // 과일들 제거
+            Destroy(otherCrab.gameObject);
+            Destroy(gameObject);
+        }
+}
+}
