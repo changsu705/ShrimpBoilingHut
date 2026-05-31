@@ -6,7 +6,7 @@ public class SpawnCrab : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        crabGame.SpawnNewCrab(transform);
+        crabGame.SpawnNewCrab(transform.position);
     }
 
     // Update is called once per frame
