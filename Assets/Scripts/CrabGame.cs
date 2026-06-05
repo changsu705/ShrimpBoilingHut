@@ -13,7 +13,7 @@ public class CrabGame : MonoBehaviour
     public float CrabStartHeight = 6.0f;                    //갑각류 시작시 높이 설정
     public float gameWidth = 5.0f;                           //게임판 너비
     public bool isGameOver = false;                          //게임 상태
-    public Camera mainCamera;                                //카메라 참조 (마우스 위치 변환에 필요)
+    public Camera MainCamera;                                //카메라 참조 (마우스 위치 변환에 필요)
 
     public Transform targetTransform;
 
@@ -23,7 +23,7 @@ public class CrabGame : MonoBehaviour
 
     void Start()
     {
-        mainCamera = mainCamera.main;
+        MainCamera = Camera.main;
         crabTimer = -3.0f;
     }
 
@@ -33,7 +33,7 @@ public class CrabGame : MonoBehaviour
 
         if (crabTimer >= 0)
         {
-            crabTimer -= crabTimer.deltaTime;
+            crabTimer -= Time.deltaTime;
         }
 
         if (crabTimer < 0 && crabTimer > -2) 
