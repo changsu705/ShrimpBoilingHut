@@ -13,15 +13,34 @@ public class CrabGame : MonoBehaviour
     public float CrabStartHeight = 6.0f;                    //갑각류 시작시 높이 설정
     public float gameWidth = 5.0f;                           //게임판 너비
     public bool isGameOver = false;                          //게임 상태
-    public Camera mainCamera;                                //카메라 참조 (마우스 위치 변환에 필요)
+    public Camera MainCamera;                                //카메라 참조 (마우스 위치 변환에 필요)
 
     public Transform targetTransform;
 
+    public float crabTimer;
+
     // Unity 메시지 | 참조 0개
+
+    void Start()
+    {
+        MainCamera = Camera.main;
+        crabTimer = -3.0f;
+    }
 
     private void Update()
     {
         if (isGameOver) return;                        //게임 오버면 리턴
+
+        if (crabTimer >= 0)
+        {
+            crabTimer -= Time.deltaTime;
+        }
+
+        if (crabTimer < 0 && crabTimer > -2) 
+        {
+            SpawnNewCrab();
+            crabTimer = -3.0f;
+        }
 
         // 현재 생성된 갑각류가 있고, 추적할 대상 오브젝트가 지정되어 있을 때만 처리
         if (currentCrab != null && targetTransform != null)
@@ -47,6 +66,11 @@ public class CrabGame : MonoBehaviour
             }
 
             currentCrab.transform.position = newPoisition;       //갑각류 좌표 갱신
+        }
+
+        if (input.GetMouseButtonDown(0) && crabTimer == -3.0f)
+        {
+            DropCrab(currentCrab);
         }
     }
 
@@ -77,6 +101,18 @@ public class CrabGame : MonoBehaviour
             {
                 rb.gravityScale = 0f;                        //시작 시에는 중력 스케일을 0 으로 해준다.
             }
+        }
+    }
+
+    public void DropCrab()
+    {
+        Rigidbody2D rb = currentCrab.GetComponent<Rigidbody2D>();
+
+        if(rb != null)
+        {
+            rb.gravityScale = 0f;
+            currentCrab = null;
+            crabTimer = 1.0f;
         }
     }
 }
