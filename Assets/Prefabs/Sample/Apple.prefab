@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 464466511939674613}
   - component: {fileID: 5613191262683048388}
   - component: {fileID: 3604740335567681152}
-  - component: {fileID: 4812319211126519578}
+  - component: {fileID: -8524163853222204866}
   m_Layer: 0
   m_Name: Apple
   m_TagString: Untagged
@@ -157,7 +157,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 0
---- !u!114 &4812319211126519578
+--- !u!114 &-8524163853222204866
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -166,7 +166,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1332942801620669539}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e2f623f2879296743af8a4c62b70bc27, type: 3}
+  m_Script: {fileID: 11500000, guid: 5f6cded6c6aacb747aaac026e758e3a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Crab
   CrabType: 0

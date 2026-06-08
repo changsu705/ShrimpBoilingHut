@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1022276068092203166}
   - component: {fileID: 2322835643655512359}
   - component: {fileID: 8338856100525911992}
-  - component: {fileID: -5166532660397475537}
+  - component: {fileID: 5855322653805704800}
   m_Layer: 0
   m_Name: Blueberry
   m_TagString: Untagged
@@ -157,7 +157,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 0
---- !u!114 &-5166532660397475537
+--- !u!114 &5855322653805704800
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -166,7 +166,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 5317787724828459938}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e2f623f2879296743af8a4c62b70bc27, type: 3}
+  m_Script: {fileID: 11500000, guid: 5f6cded6c6aacb747aaac026e758e3a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Crab
   CrabType: 1

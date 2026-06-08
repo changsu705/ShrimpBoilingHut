@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class CrabGame : MonoBehaviour
 {
@@ -16,18 +17,22 @@ public class CrabGame : MonoBehaviour
     public Camera MainCamera;                                //카메라 참조 (마우스 위치 변환에 필요)
 
     public Transform targetTransform;
+    public Transform Crabtransform;
 
     public float crabTimer;
+
+    public float[] CrapScores = { 100, 250, 550, 1150, 2350, 4750, 9550, 1 };
 
     // Unity 메시지 | 참조 0개
 
     void Start()
     {
         MainCamera = Camera.main;
+        SpawnNewCrab(transform.position);
         crabTimer = -3.0f;
     }
 
-    private void Update()
+    void Update()
     {
         if (isGameOver) return;                        //게임 오버면 리턴
 
@@ -38,7 +43,7 @@ public class CrabGame : MonoBehaviour
 
         if (crabTimer < 0 && crabTimer > -2) 
         {
-            SpawnNewCrab();
+            SpawnNewCrab(transform.position);
             crabTimer = -3.0f;
         }
 
@@ -68,9 +73,9 @@ public class CrabGame : MonoBehaviour
             currentCrab.transform.position = newPoisition;       //갑각류 좌표 갱신
         }
 
-        if (input.GetMouseButtonDown(0) && crabTimer == -3.0f)
+        if (Mouse.current.leftButton.wasPressedThisFrame && crabTimer == -3.0f)
         {
-            DropCrab(currentCrab);
+            DropCrab();
         }
     }
 
@@ -110,9 +115,18 @@ public class CrabGame : MonoBehaviour
 
         if(rb != null)
         {
-            rb.gravityScale = 0f;
+            rb.gravityScale = 3f;
             currentCrab = null;
             crabTimer = 1.0f;
+        }
+    }
+
+    public void MergeCrabs(int CrapType, Vector3 positioing)
+    {
+        if (CrapType < CrabPrefabs.Length - 1)
+        {
+            GameObject newCrap = Instantiate(CrabPrefabs[CrapType + 1], positioing, Quaternion.identity);
+            newCrap.transform.localScale = new Vector3(CrabSizes[CrapType + 1], CrabSizes[CrapType + 1], 1.0f);
         }
     }
 }

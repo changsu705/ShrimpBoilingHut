@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3969249244404764338}
   - component: {fileID: 1303621031081877027}
   - component: {fileID: 2596921376560351830}
-  - component: {fileID: 4069086750974997559}
+  - component: {fileID: -8876158081469331693}
   m_Layer: 0
   m_Name: Watermelon
   m_TagString: Untagged
@@ -157,7 +157,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 0
---- !u!114 &4069086750974997559
+--- !u!114 &-8876158081469331693
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -166,7 +166,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 4725480701305165783}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e2f623f2879296743af8a4c62b70bc27, type: 3}
+  m_Script: {fileID: 11500000, guid: 5f6cded6c6aacb747aaac026e758e3a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Crab
   CrabType: 6

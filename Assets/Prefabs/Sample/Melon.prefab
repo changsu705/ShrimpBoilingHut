@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8469890111806669722}
   - component: {fileID: 7501197691194216755}
   - component: {fileID: 3529591507335982352}
-  - component: {fileID: -7643685131184632231}
+  - component: {fileID: -5444799818865973348}
   m_Layer: 0
   m_Name: Melon
   m_TagString: Untagged
@@ -157,7 +157,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 0
---- !u!114 &-7643685131184632231
+--- !u!114 &-5444799818865973348
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -166,7 +166,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 3678398034543921106}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e2f623f2879296743af8a4c62b70bc27, type: 3}
+  m_Script: {fileID: 11500000, guid: 5f6cded6c6aacb747aaac026e758e3a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Crab
   CrabType: 4

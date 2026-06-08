@@ -16,16 +16,22 @@ public class Crab : MonoBehaviour
 
         if (otherCrab != null && !otherCrab.hasMerged && otherCrab.CrabType == CrabType)     // 충돌한 것이 갑각류고 타입이 같으면(합쳐지지 않았을 경우)
         {
+            Debug.Log("갑각류 충돌함!!!");
             hasMerged = true;                                                                // 합쳐짐 표시
             otherCrab.hasMerged = true;
 
             Vector3 mergePosition = (transform.position + otherCrab.transform.position) / 2f;      // 두 과일의 중간 위치 계산
 
-            // 게임 매니저에서 Merge 구현 된 것을 호출 (아직 미구현)
+            CrabGame gameManager = FindAnyObjectByType<CrabGame>();
+            if (gameManager != null)
+            {
+                gameManager.MergeCrabs(CrabType, mergePosition);
+                Debug.Log("갑각류 합쳐짐!!!");
+            }
 
-            // 과일들 제거
             Destroy(otherCrab.gameObject);
             Destroy(gameObject);
         }
-}
+    }
+
 }

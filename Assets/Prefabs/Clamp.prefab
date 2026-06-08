@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &975177534177136833
+--- !u!1 &5255160371153144760
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,8 +8,9 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 2781342362695103915}
-  - component: {fileID: 5645470370995927990}
+  - component: {fileID: 5872411324702826181}
+  - component: {fileID: 4546041561642701351}
+  - component: {fileID: 8741379370926351715}
   m_Layer: 0
   m_Name: Clamp
   m_TagString: Untagged
@@ -17,35 +18,82 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &2781342362695103915
+--- !u!4 &5872411324702826181
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 975177534177136833}
+  m_GameObject: {fileID: 5255160371153144760}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 3.26, y: 3.95, z: -0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 3026994770430733449}
+  - {fileID: 698530067106452493}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5645470370995927990
+--- !u!114 &4546041561642701351
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 975177534177136833}
+  m_GameObject: {fileID: 5255160371153144760}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aac0bb3ea380e094cb37f422daa75f5e, type: 3}
+  m_Script: {fileID: 11500000, guid: a0845d4dd42afdf48bac4f52a75c9580, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CrabGame
+  CrabPrefabs:
+  - {fileID: 1332942801620669539, guid: e2772afacf8bfce47a5755e7f52e093e, type: 3}
+  - {fileID: 5317787724828459938, guid: 982d9f87d9dfbca44acea250b8d6f892, type: 3}
+  - {fileID: 6472328991116377985, guid: 23ec44489738d024bbd7cf78321df1af, type: 3}
+  - {fileID: 5982096542242240060, guid: 0f030dc191b953b44aa057ce0a738287, type: 3}
+  - {fileID: 3678398034543921106, guid: 6d0addbd2dad4f54a841b234d4f506cf, type: 3}
+  - {fileID: 5540116573772071306, guid: 93f73eb17a92a2040a9fc055a91eb9a7, type: 3}
+  - {fileID: 4725480701305165783, guid: fcdcd1161cc4cb94081c2dbef1ea3d81, type: 3}
+  CrabSizes:
+  - 0.5
+  - 0.7
+  - 0.9
+  - 1.1
+  - 1.3
+  - 1.5
+  - 1.7
+  - 1.9
+  currentCrab: {fileID: 0}
+  currentCrabType: 0
+  CrabStartHeight: 6
+  gameWidth: 8.84
+  isGameOver: 0
+  MainCamera: {fileID: 0}
+  targetTransform: {fileID: 5872411324702826181}
+  Crabtransform: {fileID: 0}
+  crabTimer: 0
+  CrapScores:
+  - 100
+  - 250
+  - 550
+  - 1150
+  - 2350
+  - 4750
+  - 9550
+  - 1
+--- !u!114 &8741379370926351715
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5255160371153144760}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a440ea29848065458e3930dbb2cc9b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MouseTrackingYOnly2D
---- !u!1 &6431163652391973226
+--- !u!1 &5990919941460214939
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -53,47 +101,47 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 3026994770430733449}
-  - component: {fileID: 7336052045286156485}
-  - component: {fileID: 3416770299187078779}
-  - component: {fileID: 7519049937095249114}
+  - component: {fileID: 698530067106452493}
+  - component: {fileID: 5852372961642145298}
+  - component: {fileID: 799855173281180248}
+  - component: {fileID: 4325672635879945916}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &3026994770430733449
+  m_IsActive: 0
+--- !u!4 &698530067106452493
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6431163652391973226}
+  m_GameObject: {fileID: 5990919941460214939}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 2781342362695103915}
+  m_Father: {fileID: 5872411324702826181}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &7336052045286156485
+--- !u!33 &5852372961642145298
 MeshFilter:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6431163652391973226}
+  m_GameObject: {fileID: 5990919941460214939}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!23 &3416770299187078779
+--- !u!23 &799855173281180248
 MeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6431163652391973226}
+  m_GameObject: {fileID: 5990919941460214939}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -136,13 +184,13 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &7519049937095249114
+--- !u!65 &4325672635879945916
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6431163652391973226}
+  m_GameObject: {fileID: 5990919941460214939}
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
