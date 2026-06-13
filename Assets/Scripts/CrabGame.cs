@@ -1,5 +1,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
+using TMPro;
 
 public class CrabGame : MonoBehaviour
 {
@@ -15,13 +17,30 @@ public class CrabGame : MonoBehaviour
     public float gameWidth = 5.0f;                           //게임판 너비
     public bool isGameOver = false;                          //게임 상태
     public Camera MainCamera;                                //카메라 참조 (마우스 위치 변환에 필요)
+    public float gameScore = 0f;
 
     public Transform targetTransform;
     public Transform Crabtransform;
 
     public float crabTimer;
 
-    public float[] CrapScores = { 100, 250, 550, 1150, 2350, 4750, 9550, 1 };
+    public float[] CrapScores = { 100, 250, 550, 1150, 2350, 4750, 9550, 19050 };
+
+    [Header("클리어 게이지 시스템")]
+    public float maxGauge = 100f;
+    private float currentGauge = 0f;
+
+    public float[] ClearRewardTable = { 2f, 4f, 6f, 9f, 13f, 18f, 24f, 31f, 39f, 48f, 60f };
+    public float ClearDecrease = 3f;
+    public float ClearDecreaseRate = 3f;
+    private float noMergeTimer = 0f;
+    private bool isTimerRunning = false;
+    public Slider ClearSlider;
+    public float Clearrate;
+    public int ClearCounter = 0;
+
+    public TMP_Text UIScore;
+
 
     // Unity 메시지 | 참조 0개
 
@@ -77,9 +96,23 @@ public class CrabGame : MonoBehaviour
         {
             DropCrab();
         }
+
+        // 게이지가 있을 때만 타이머와 감소 로직이 작동함
+        if (currentGauge > 0)
+        {
+            noMergeTimer += Time.deltaTime;
+
+            // 3초 동안 머지가 일어나지 않았다면 게이지 감소 시작
+            if (noMergeTimer >= ClearDecreaseRate)
+            {
+                currentGauge -= ClearDecrease * Time.deltaTime;
+                currentGauge = Mathf.Clamp(currentGauge, 0f, maxGauge);
+                UpdateGaugeUI();
+            }
+        }
+        UIScore.text = gameScore.ToString();
     }
 
-    // [수정] 외부에서 transform.position(Vector3)으로 직접 참조할 수 있도록 매개변수 타입을 Vector3로 변경했습니다.
     public void SpawnNewCrab(Vector3 targetPosition)                                     //갑각류 생성 함수
     {
         if (!isGameOver)                                     //게임 오버가 아닐 때만 새 과일 생성
@@ -123,10 +156,50 @@ public class CrabGame : MonoBehaviour
 
     public void MergeCrabs(int CrapType, Vector3 positioing)
     {
+        gameScore += CrapScores[CrapType];
+        Debug.Log("갑각류 합쳐짐!" + CrapScores[CrapType] + "점 추가됨");
+        Debug.Log("현제 점수" + gameScore);
+        noMergeTimer = 0f;
+        currentGauge += ClearRewardTable[CrapType];
+        currentGauge = Mathf.Clamp(currentGauge, 0f, maxGauge);
+        UpdateGaugeUI();
+        if (currentGauge >= maxGauge)
+        {
+            TriggerScreenClear();
+            return; // 전체 클리어가 되었으므로 다음 과일 생성은 건너뜁니다.
+        }
         if (CrapType < CrabPrefabs.Length - 1)
         {
             GameObject newCrap = Instantiate(CrabPrefabs[CrapType + 1], positioing, Quaternion.identity);
             newCrap.transform.localScale = new Vector3(CrabSizes[CrapType + 1], CrabSizes[CrapType + 1], 1.0f);
+        }
+    }
+
+    private void TriggerScreenClear()
+    {
+        Debug.Log("★ 게이지 완충! 화면의 모든 과일을 제거합니다! ★");
+
+        // 씬에 존재하는 모든 Crab 스크립트를 가진 오브젝트를 찾음
+        Crab[] allcrabs = FindObjectsOfType<Crab>();
+
+        foreach (Crab crab in allcrabs)
+        {
+            // 여기서 갑각류 터지는 이펙트추가.
+            // Instantiate(clearEffectPrefab, fruit.transform.position, Quaternion.identity);
+            Destroy(crab.gameObject);
+        }
+
+        // 게이지 및 타이머 초기화
+        currentGauge = 0f;
+        noMergeTimer = 0f;
+        UpdateGaugeUI();
+    }
+
+    private void UpdateGaugeUI()
+    {
+        if (ClearSlider != null)
+        {
+            ClearSlider.value = currentGauge / maxGauge;
         }
     }
 }
