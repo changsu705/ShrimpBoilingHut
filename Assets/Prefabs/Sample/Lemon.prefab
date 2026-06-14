@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 1043380556749816868}
   - component: {fileID: 2968423674945439169}
   - component: {fileID: 5555100920451501758}
+  - component: {fileID: -4621650312523242167}
   m_Layer: 0
   m_Name: Lemon
   m_TagString: Untagged
@@ -171,3 +172,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Crab
   CrabType: 3
   hasMerged: 0
+--- !u!114 &-4621650312523242167
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5982096542242240060}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8cb9a03ac5f13d546bea6a62f0818fd3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ObjectBounce
+  bounceHeight: 0.4
+  duration: 0.25

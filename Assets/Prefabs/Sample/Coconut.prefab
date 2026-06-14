@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 377138546886618041}
   - component: {fileID: 4390222201792508514}
   - component: {fileID: 855632348933797261}
+  - component: {fileID: -4393911086596700704}
   m_Layer: 0
   m_Name: Coconut
   m_TagString: Untagged
@@ -171,3 +172,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Crab
   CrabType: 2
   hasMerged: 0
+--- !u!114 &-4393911086596700704
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6472328991116377985}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8cb9a03ac5f13d546bea6a62f0818fd3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ObjectBounce
+  bounceHeight: 0.4
+  duration: 0.25
