@@ -2,11 +2,13 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
 using TMPro;
+using DG.Tweening.Core.Easing;
 
 public class CrabGame : MonoBehaviour
 {
     // Unity 스크립트 | 참조 0개
 
+    public static CrabGame Instance;
     public GameObject[] CrabPrefabs;                        //갑각류 프리팹 배열 선언
     public float[] CrabSizes = { 0.5f, 0.7f, 0.9f, 1.1f, 1.3f, 1.5f, 1.7f, 1.9f };    //갑각류 크기 선언
 
@@ -40,6 +42,8 @@ public class CrabGame : MonoBehaviour
     public int ClearCounter = 0;
 
     public TMP_Text UIScore;
+
+
 
 
     // Unity 메시지 | 참조 0개
@@ -146,7 +150,18 @@ public class CrabGame : MonoBehaviour
     {
         Rigidbody2D rb = currentCrab.GetComponent<Rigidbody2D>();
 
-        if(rb != null)
+        Crab CrabScript = currentCrab.GetComponent<Crab>();
+
+        if (CrabScript != null)
+        {
+            CrabScript.isDropped = true;
+        }
+        else
+        {
+            Debug.Log("Crab.cs 검색안됌 프리팹 롤백 필요.");
+        }
+
+        if (rb != null)
         {
             rb.gravityScale = 3f;
             currentCrab = null;
@@ -201,5 +216,17 @@ public class CrabGame : MonoBehaviour
         {
             ClearSlider.value = currentGauge / maxGauge;
         }
+    }
+    public void GameOver()
+    {
+        if (isGameOver) return; // 중복 실행 방지
+
+        isGameOver = true;
+        Debug.Log("★★★ GAME OVER ★★★");
+
+        // 시간 정지 혹은 결과창 팝업 띄우기
+        Time.timeScale = 0f;
+
+        // 예: GameOverUI.SetActive(true);
     }
 }
