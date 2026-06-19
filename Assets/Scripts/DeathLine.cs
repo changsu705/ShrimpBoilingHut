@@ -1,34 +1,56 @@
-using System.Collections.Generic;
+ï»¿using System.Collections.Generic;
 using UnityEngine;
 
 public class DeathLine : MonoBehaviour
 {
-    [Header("°ÔÀÓ¿À¹ö À¯¿¹ ½Ã°£")]
+    [Header("ê²Œì„ì˜¤ë²„ ìœ ì˜ˆ ì‹œê°„")]
     public float maxWarningTime = 3f;
     private float warningTimer = 0f;
 
-    // ÇöÀç µ¥½º¶óÀÎ ¿µ¿ª ¾È¿¡ µé¾î¿Í ÀÖ´Â °úÀÏµéÀ» ÃßÀûÇÏ´Â ¸®½ºÆ®
+    // í˜„ì¬ ë°ìŠ¤ë¼ì¸ ì˜ì—­ ì•ˆì— ë“¤ì–´ì™€ ìˆëŠ” ê³¼ì¼ë“¤ì„ ì¶”ì í•˜ëŠ” ë¦¬ìŠ¤íŠ¸
     private List<Crab> fruitsInZone = new List<Crab>();
 
-    [Header("½Ã°¢ ¿¬Ãâ (¼±ÅÃ)")]
-    public GameObject warningUI; // È­¸é¿¡ ¶ç¿ï "WARNING!" ÅØ½ºÆ®³ª ±ôºıÀÌ´Â »¡°£ ¼± UI
+    [Header("ì‹œê° ì—°ì¶œ (ì„ íƒ)")]
+    public GameObject warningUI; // í™”ë©´ì— ë„ìš¸ "WARNING!" í…ìŠ¤íŠ¸ë‚˜ UI
+
+    [Header("ë¼ì¸ ë Œë”ëŸ¬ ì—°ì¶œ")]
+    [SerializeField] private LineRenderer lineRenderer;
+    [SerializeField] private Color normalColor = Color.white; // í‰ìƒì‹œ ë¼ì¸ ìƒ‰ìƒ
+    [SerializeField] private Color warningColor = Color.red;   // ê²½ê³ ì‹œ ë³€í•  ë¹¨ê°„ìƒ‰
+    [SerializeField] private float flashSpeed = 5f;            // ê¹œë¹¡ì´ëŠ” ì†ë„
+
+    private void Start()
+    {
+        // ë§Œì•½ ì—ë””í„°ì—ì„œ ë¼ì¸ ë Œë”ëŸ¬ë¥¼ ì§ì ‘ ë„£ì§€ ì•Šì•˜ë‹¤ë©´ ìë™ìœ¼ë¡œ ì°¾ì•„ì˜µë‹ˆë‹¤.
+        if (lineRenderer == null)
+        {
+            lineRenderer = GetComponent<LineRenderer>();
+        }
+
+        // ì‹œì‘í•  ë•ŒëŠ” í‰ìƒì‹œ ìƒ‰ìƒìœ¼ë¡œ ì„¸íŒ…
+        SetLineColor(normalColor);
+    }
 
     private void Update()
     {
-        // 1. È¤½Ã ¸®½ºÆ® ¾È¿¡¼­ ÆÄ±«(Merge µîÀ¸·Î »èÁ¦)µÈ °úÀÏÀÌ ÀÖ´Ù¸é ¸®½ºÆ®¿¡¼­ Á¦°Å (À¯´ÏÆ¼ ÇÊ¼ö ¿¹¿ÜÃ³¸®)
+        // 1. í˜¹ì‹œ ë¦¬ìŠ¤íŠ¸ ì•ˆì—ì„œ íŒŒê´´(Merge ë“±ìœ¼ë¡œ ì‚­ì œ)ëœ ê³¼ì¼ì´ ìˆë‹¤ë©´ ë¦¬ìŠ¤íŠ¸ì—ì„œ ì œê±°
         fruitsInZone.RemoveAll(item => item == null);
 
-        // 2. ¶óÀÎ ¾È¿¡ ¶³¾îÁø °úÀÏÀÌ ÇÏ³ª¶óµµ ÀÖ´Ù¸é Å¸ÀÌ¸Ó °¡µ¿
+        // 2. ë¼ì¸ ì•ˆì— ë–¨ì–´ì§„ ê³¼ì¼ì´ í•˜ë‚˜ë¼ë„ ìˆë‹¤ë©´ íƒ€ì´ë¨¸ ê°€ë™
         if (fruitsInZone.Count > 0)
         {
             warningTimer += Time.deltaTime;
 
-            // °æ°í UI È°¼ºÈ­ (±ôºıÀÌ´Â ¿¬Ãâ µîÀ» Ãß°¡ÇÏ¸é ÁÁ½À´Ï´Ù)
             if (warningUI != null) warningUI.SetActive(true);
 
-            Debug.Log($"[°æ°í] °úÀÏÀÌ ¼±À» ³Ñ¾ú½À´Ï´Ù! °ÔÀÓ¿À¹ö±îÁö: {maxWarningTime - warningTimer:F1}ÃÊ");
+            // ğŸ¨ [ì¶”ê°€] ë¼ì¸ ìƒ‰ìƒ ê¹œë¹¡ì„ ì—°ì¶œ (Mathf.PingPongì„ ì´ìš©í•´ 0~1 ì‚¬ì´ë¥¼ ë¶€ë“œëŸ½ê²Œ ì™•ë³µ)
+            float lerpFactor = Mathf.PingPong(Time.time * flashSpeed, 1f);
+            Color blendedColor = Color.Lerp(normalColor, warningColor, lerpFactor);
+            SetLineColor(blendedColor);
 
-            // 3ÃÊ Á¦ÇÑ½Ã°£ ÃÊ°ú ½Ã °ÔÀÓ¿À¹ö
+            Debug.Log($"[ê²½ê³ ] ê³¼ì¼ì´ ì„ ì„ ë„˜ì—ˆìŠµë‹ˆë‹¤! ê²Œì„ì˜¤ë²„ê¹Œì§€: {maxWarningTime - warningTimer:F1}ì´ˆ");
+
+            // 3ì´ˆ ì œí•œì‹œê°„ ì´ˆê³¼ ì‹œ ê²Œì„ì˜¤ë²„
             if (warningTimer >= maxWarningTime)
             {
                 CrabGame.Instance.GameOver();
@@ -36,9 +58,21 @@ public class DeathLine : MonoBehaviour
         }
         else
         {
-            // ¶óÀÎÀÌ ±ú²ıÇØÁö¸é Å¸ÀÌ¸Ó ¹× UI ¸®¼Â
+            // ë¼ì¸ì´ ê¹¨ë—í•´ì§€ë©´ íƒ€ì´ë¨¸ ë° UI ë¦¬ì…‹, ìƒ‰ìƒë„ ì›ìƒë³µêµ¬
             warningTimer = 0f;
             if (warningUI != null) warningUI.SetActive(false);
+
+            SetLineColor(normalColor);
+        }
+    }
+
+    // ë¼ì¸ ë Œë”ëŸ¬ì˜ ì‹œì‘(Start)ìƒ‰ìƒê³¼ ë(End)ìƒ‰ìƒì„ í•œ ë²ˆì— ë°”ê¿”ì£¼ëŠ” í¸ì˜ìš© í•¨ìˆ˜
+    private void SetLineColor(Color color)
+    {
+        if (lineRenderer != null)
+        {
+            lineRenderer.startColor = color;
+            lineRenderer.endColor = color;
         }
     }
 
@@ -46,7 +80,6 @@ public class DeathLine : MonoBehaviour
     {
         Crab crab = collision.GetComponent<Crab>();
 
-        // °úÀÏ ÄÄÆ÷³ÍÆ®°¡ ÀÖ°í, »ç¿ëÀÚ°¡ Á¶ÀÛ ÁßÀÎ °úÀÏÀÌ ¾Æ´Ñ 'ÀÌ¹Ì ¶³¾îÁø °úÀÏ'¸¸ Ã¼Å©
         if (crab != null && crab.isDropped)
         {
             if (!fruitsInZone.Contains(crab))

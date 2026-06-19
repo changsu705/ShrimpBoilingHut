@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 3783620389755521638}
   - component: {fileID: 5160273434025431414}
   - component: {fileID: 3903330142267234316}
+  - component: {fileID: 6027996335171196755}
   - component: {fileID: 5341183641449593133}
   - component: {fileID: 8154967164267384060}
   m_Layer: 0
@@ -109,6 +110,20 @@ MonoBehaviour:
   CrabType: 1
   hasMerged: 0
   isDropped: 0
+--- !u!114 &6027996335171196755
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1764825519913515405}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8cb9a03ac5f13d546bea6a62f0818fd3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ObjectBounce
+  bounceHeight: 0.4
+  duration: 0.25
 --- !u!60 &5341183641449593133
 PolygonCollider2D:
   m_ObjectHideFlags: 0
