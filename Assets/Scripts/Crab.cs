@@ -6,6 +6,9 @@ public class Crab : MonoBehaviour
 
     public bool hasMerged = false;
 
+    [HideInInspector] public bool isDropped = false;
+
+
     // Unity 메시지 | 참조 0개
     private void OnCollisionEnter2D(Collision2D collision)
     {
