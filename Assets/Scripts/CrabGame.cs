@@ -4,7 +4,7 @@ using UnityEngine.UI;
 using TMPro;
 using DG.Tweening.Core.Easing;
 
-public class CrabGame : MonoBehaviour
+public class CrabGame : MonoBehaviour   
 {
     // Unity 스크립트 | 참조 0개
 
@@ -121,11 +121,11 @@ public class CrabGame : MonoBehaviour
     {
         if (!isGameOver)                                     //게임 오버가 아닐 때만 새 과일 생성
         {
-            currentCrabType = Random.Range(0, 3); //0~2 사이의 랜덤 갑각류 타입
+            currentCrabType = Random.Range(0, 2); //0~2 사이의 랜덤 갑각류 타입
 
             // 매개변수로 받아온 Vector3의 x, y 값을 직접 활용합니다.
             float targetX = targetPosition.x;
-            float targetY = targetPosition.y;
+            float targetY = CrabStartHeight;
 
             Vector3 spawnPosition = new Vector3(targetX, targetY, 0);
 
