@@ -9,6 +9,8 @@ public class Crab : MonoBehaviour
 
     public bool isDropped = false;
 
+    public AudioClip mergeSound;
+
     private Collider2D myCollider;
     private Rigidbody2D myRigidbody;
 
@@ -36,6 +38,10 @@ public class Crab : MonoBehaviour
             }
 
             Debug.Log("갑각류 충돌함!!!");
+            if (SoundManager.instance != null)
+            {
+                SoundManager.instance.PlaySound(mergeSound);
+            }
             hasMerged = true;                                                                // 합쳐짐 표시
             otherCrab.hasMerged = true;
 

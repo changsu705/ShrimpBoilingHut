@@ -110,6 +110,7 @@ MonoBehaviour:
   CrabType: 1
   hasMerged: 0
   isDropped: 0
+  mergeSound: {fileID: 8300000, guid: d82c5b7c6531ca34883efabf1e331e77, type: 3}
 --- !u!114 &6027996335171196755
 MonoBehaviour:
   m_ObjectHideFlags: 0
