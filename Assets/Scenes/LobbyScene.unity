@@ -145,7 +145,7 @@ Light:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 77705724}
   m_Enabled: 1
-  serializedVersion: 12
+  serializedVersion: 13
   m_Type: 1
   m_Color: {r: 1, g: 0.95686275, b: 0.8392157, a: 1}
   m_Intensity: 1
@@ -197,7 +197,7 @@ Light:
   m_UseBoundingSphereOverride: 0
   m_UseViewFrustumForShadowCasterCull: 1
   m_ForceVisible: 0
-  m_ShadowRadius: 0
+  m_ShapeRadius: 0
   m_ShadowAngle: 0
   m_LightUnit: 1
   m_LuxAtDistance: 1
@@ -1510,6 +1510,22 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 21300000, guid: da97ea533bac765499e8de2cefeb3917, type: 3}
     - target: {fileID: 3297125390513293632, guid: 370a920771d8f5f4f892d5466bf61d5d, type: 3}
+      propertyPath: m_Transition
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3297125390513293632, guid: 370a920771d8f5f4f892d5466bf61d5d, type: 3}
+      propertyPath: m_SpriteState.m_PressedSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 2bbb15deec9b5f34a9bbf395c4427561, type: 3}
+    - target: {fileID: 3297125390513293632, guid: 370a920771d8f5f4f892d5466bf61d5d, type: 3}
+      propertyPath: m_SpriteState.m_SelectedSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 2bbb15deec9b5f34a9bbf395c4427561, type: 3}
+    - target: {fileID: 3297125390513293632, guid: 370a920771d8f5f4f892d5466bf61d5d, type: 3}
+      propertyPath: m_SpriteState.m_HighlightedSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 45447d35c78df55418ad2b4b4ff6f338, type: 3}
+    - target: {fileID: 3297125390513293632, guid: 370a920771d8f5f4f892d5466bf61d5d, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1722682258}
@@ -1529,6 +1545,22 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: bfe93fce276de7d44ab1c8723ce37ade, type: 3}
+    - target: {fileID: 6497566978719102653, guid: 370a920771d8f5f4f892d5466bf61d5d, type: 3}
+      propertyPath: m_Transition
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6497566978719102653, guid: 370a920771d8f5f4f892d5466bf61d5d, type: 3}
+      propertyPath: m_SpriteState.m_PressedSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 3eafcb0e20a4fbc49a1dc805fa241f21, type: 3}
+    - target: {fileID: 6497566978719102653, guid: 370a920771d8f5f4f892d5466bf61d5d, type: 3}
+      propertyPath: m_SpriteState.m_SelectedSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 3eafcb0e20a4fbc49a1dc805fa241f21, type: 3}
+    - target: {fileID: 6497566978719102653, guid: 370a920771d8f5f4f892d5466bf61d5d, type: 3}
+      propertyPath: m_SpriteState.m_HighlightedSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: dfc81bedd65c41a429d6c664a70c5831, type: 3}
     - target: {fileID: 6497566978719102653, guid: 370a920771d8f5f4f892d5466bf61d5d, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -1613,6 +1645,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6803029865273901721, guid: 370a920771d8f5f4f892d5466bf61d5d, type: 3}
+      propertyPath: m_Transition
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6803029865273901721, guid: 370a920771d8f5f4f892d5466bf61d5d, type: 3}
+      propertyPath: m_SpriteState.m_PressedSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: bfe119fb5c3131a46a572fb10f790a2b, type: 3}
+    - target: {fileID: 6803029865273901721, guid: 370a920771d8f5f4f892d5466bf61d5d, type: 3}
+      propertyPath: m_SpriteState.m_SelectedSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: bfe119fb5c3131a46a572fb10f790a2b, type: 3}
+    - target: {fileID: 6803029865273901721, guid: 370a920771d8f5f4f892d5466bf61d5d, type: 3}
+      propertyPath: m_SpriteState.m_HighlightedSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 8d13780559037d64595fa63e3b01ac67, type: 3}
     - target: {fileID: 6803029865273901721, guid: 370a920771d8f5f4f892d5466bf61d5d, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
