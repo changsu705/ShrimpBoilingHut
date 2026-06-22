@@ -305,4 +305,9 @@ public class CrabGame : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
+    public void OnClickGoToLobbyScene()
+    {
+        SceneManager.LoadScene("LobbyScene");
+    }
+
 }

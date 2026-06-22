@@ -41,6 +41,7 @@ public class Crab : MonoBehaviour
             if (SoundManager.instance != null)
             {
                 SoundManager.instance.PlaySound(mergeSound);
+                Debug.Log("소리 재생됨!");
             }
             hasMerged = true;                                                                // 합쳐짐 표시
             otherCrab.hasMerged = true;
